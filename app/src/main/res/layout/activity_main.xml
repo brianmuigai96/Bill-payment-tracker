@@ -26,8 +26,17 @@
         android:layout_margin="10dp"
         android:padding="20dp" />
 
+    <TextView
+        android:id="@+id/forgottenpassword"
+        android:layout_below="@+id/loginbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgotten password?"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"/>
+
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/loginbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
@@ -79,7 +88,6 @@
             android:src="@drawable/google"/>
 
     </LinearLayout>
-
 
 
 
