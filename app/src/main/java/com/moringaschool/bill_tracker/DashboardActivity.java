@@ -1,4 +1,6 @@
 package com.moringaschool.bill_tracker;
 
-public class DashboardActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class DashboardActivity  extends AppCompatActivity {
 }

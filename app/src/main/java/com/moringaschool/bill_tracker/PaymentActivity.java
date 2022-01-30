@@ -1,4 +1,12 @@
 package com.moringaschool.bill_tracker;
 
-public class PaymentActivity {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PaymentActivity  extends AppCompatActivity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }
