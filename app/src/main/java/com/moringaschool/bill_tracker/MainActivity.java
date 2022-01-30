@@ -16,10 +16,15 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.loginbutton) MaterialButton mLoginButton;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mLoginButton.setOnClickListener({
+
+        });
+
     }
 }
