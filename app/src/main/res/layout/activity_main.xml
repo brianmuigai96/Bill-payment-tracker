@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/socialicons"
+        android:text="or sign up with" />
+
     <LinearLayout
         android:id="@+id/socialicons"
         android:layout_width="match_parent"
@@ -27,11 +34,7 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+
 
 
 </RelativeLayout>
