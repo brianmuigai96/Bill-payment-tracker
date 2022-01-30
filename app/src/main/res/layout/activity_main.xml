@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/socialicons"
         android:text="or sign up with"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -27,21 +28,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:gravity="center"
         android:layout_marginBottom="27dp"
         >
 
         <ImageView
             android:id="@+id/facebookicon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="20dp"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
             android:src="@drawable/fb"/>
 
         <ImageView
             android:id="@+id/googleicon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="20dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
             android:src="@drawable/google"/>
 
     </LinearLayout>
