@@ -8,11 +8,9 @@ import android.widget.EditText;
 import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-//    private EditText mUsername;
-//    private EditText mPassword;
-//    private MaterialButton mLoginButton;
     @BindView(R.id.password) EditText mPassword;
     @BindView(R.id.username) EditText mUsername;
     @BindView(R.id.loginbutton) MaterialButton mLoginButton;
@@ -22,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mUsername =(EditText) findViewById(R.id.username);
-        mPassword = (EditText) findViewById(R.id.password);
-        mLoginButton =(MaterialButton) findViewById(R.id.loginbutton);
+        ButterKnife.bind(this);
     }
 }
