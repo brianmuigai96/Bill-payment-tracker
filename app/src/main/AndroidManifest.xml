@@ -26,6 +26,14 @@
                 android:value="com.moringaschool.bill_tracker.MainActivity">
             </meta-data>
         </activity>
+        <activity
+            android:name=".PaymentActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.bill_tracker.MainActivity">
+            </meta-data>
+        </activity>
+
     </application>
 
 </manifest>
