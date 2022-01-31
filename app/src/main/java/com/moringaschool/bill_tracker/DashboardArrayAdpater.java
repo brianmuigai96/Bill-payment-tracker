@@ -13,5 +13,11 @@ public class DashboardArrayAdpater extends ArrayAdapter {
         this.mService= mService;
         this.mStatus = mStatus;
     }
+    @Override
+    public Object getItem(int position) {
+        String service = mService[position];
+        String status = mStatus[position];
+        return String.format("%s \nYour current status is : %s", service, status);
+    }
 
 }
