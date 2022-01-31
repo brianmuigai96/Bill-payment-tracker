@@ -19,5 +19,8 @@ public class DashboardArrayAdpater extends ArrayAdapter {
         String status = mStatus[position];
         return String.format("%s \nYour current status is : %s", service, status);
     }
+    public int getCount() {
+        return mService.length;
+    }
 
 }
