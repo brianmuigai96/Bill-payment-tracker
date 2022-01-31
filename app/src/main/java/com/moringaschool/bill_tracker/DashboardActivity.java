@@ -37,9 +37,10 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
                 Toast.makeText(DashboardActivity.this, service, Toast.LENGTH_LONG).show();
             }
         });
-
+//unique naming system
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
+        String password = intent.getStringExtra("password");
         mUsernameEditText.setText("Here are all the status of your bills: " + username);
 
         mProceedButton.setOnClickListener(this);
@@ -51,7 +52,7 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
                     Intent intent = new Intent(DashboardActivity.this, PaymentActivity.class);
                     intent.putExtra(" payment","payment");
                     startActivity(intent);
-//                    onBackPressed();
+                    onBackPressed();
                 }
 
 
