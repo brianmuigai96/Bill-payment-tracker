@@ -38,6 +38,18 @@ public class DashboardActivity  extends AppCompatActivity {
         Intent intent= getIntent();
         String username = intent.getStringExtra("username");
         mUsernameEditText.setText("Here are all the status of your bills: " + username);
+        mProceedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v==mProceedButton) {
+//                passing data from Dashboard activity
+                    Intent intent = new Intent(DashboardActivity.this, PaymentActivity.class);
+                    intent.putExtra("Username", username);
+                    startActivity(intent);
+                    onBackPressed();
+                }
+            }
+        });
 
     }
 }
