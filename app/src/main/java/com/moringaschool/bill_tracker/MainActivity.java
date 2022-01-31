@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v==mLoginButton) {
+//                    TODO functionalise the username
                     String username =mUsername.getText().toString();
 //                passing data from Dashboard activity
                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
