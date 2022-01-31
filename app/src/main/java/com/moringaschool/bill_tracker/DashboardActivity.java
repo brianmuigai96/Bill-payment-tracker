@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -18,6 +20,7 @@ public class DashboardActivity  extends AppCompatActivity {
     private TextView mUsernameEditText;
     private String [] service = new String[]{"Dstv","Gotv","Rent","Car Insuarance","Water bill","Electricity bill"};
     private String [] status = new String[]{"Paid","Pending","Unpaid","Overdue","Unpaid","Overdue"};
+    @BindView(R.id.proceedbutton) MaterialButton mProceedButton;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +41,13 @@ public class DashboardActivity  extends AppCompatActivity {
         Intent intent= getIntent();
         String username = intent.getStringExtra("username");
         mUsernameEditText.setText("Here are all the status of your bills: " + username);
+
         mProceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (v==mProceedButton) {
 //                passing data from Dashboard activity
                     Intent intent = new Intent(DashboardActivity.this, PaymentActivity.class);
-                    intent.putExtra("Username", username);
                     startActivity(intent);
                     onBackPressed();
                 }
