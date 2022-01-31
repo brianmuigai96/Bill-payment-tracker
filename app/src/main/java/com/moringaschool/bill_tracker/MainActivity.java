@@ -2,7 +2,10 @@ package com.moringaschool.bill_tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 import com.google.android.material.button.MaterialButton;
@@ -22,9 +25,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mLoginButton.setOnClickListener({
-
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v==mLoginButton) {
+                    String username = .getText().toString();
+//                passing data from Dashboard activity
+                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                    intent.putExtra("loc", username);
+                    startActivity(intent);
+                    onBackPressed();
+                }
+            }
         });
-
     }
 }
