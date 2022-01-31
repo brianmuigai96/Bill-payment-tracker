@@ -23,7 +23,8 @@ Brian Muigai
 ## Technologies Used
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/generator/?plabel=XML&pbg=%23EF0A0A)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com)
+ 
 
 
 ## Description
