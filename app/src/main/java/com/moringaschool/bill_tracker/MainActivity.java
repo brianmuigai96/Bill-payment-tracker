@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v==mLoginButton) {
-                    String username = .getText().toString();
+                    String username =mUsernameEditText.getText().toString();
 //                passing data from Dashboard activity
                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                    intent.putExtra("loc", username);
+                    intent.putExtra("Username", username);
                     startActivity(intent);
                     onBackPressed();
                 }
