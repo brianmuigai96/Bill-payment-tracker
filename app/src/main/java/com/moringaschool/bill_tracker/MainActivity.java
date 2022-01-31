@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     String username =mUsername.getText().toString();
 //                passing data from Dashboard activity
                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                    intent.putExtra("Username", username);
+                    intent.putExtra("Username","true");
                     startActivity(intent);
                     onBackPressed();
                 }

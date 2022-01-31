@@ -48,6 +48,7 @@ public class DashboardActivity  extends AppCompatActivity {
                 if (v==mProceedButton) {
 //                passing data from Dashboard activity
                     Intent intent = new Intent(DashboardActivity.this, PaymentActivity.class);
+                    intent.putExtra(" payment","payment");
                     startActivity(intent);
                     onBackPressed();
                 }
