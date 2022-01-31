@@ -1,9 +1,6 @@
 # Bill-Tracker
 #### Bill-Tracker, January 29th 2022
 #### By **Brian Muigai**
-![](drawable/screenshot.jpg)
-
-
 
 ## Author's name
 Brian Muigai
