@@ -2,8 +2,11 @@ package com.moringaschool.bill_tracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,16 +15,29 @@ import butterknife.ButterKnife;
 
 public class DashboardActivity  extends AppCompatActivity {
     @BindView(R.id.listView) ListView mListView;
-    private TextView UsernameEditText;
+    private TextView mUsernameEditText;
     private String [] service = new String[]{"Dstv","Gotv","Rent","Car Insuarance","Water bill","Electricity bill"};
     private String [] status = new String[]{"Paid","Pending","Unpaid","Overdue","Unpaid","Overdue"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        Intent intent = getIntent();
         ButterKnife.bind(this);
-        String payment = intent.getStringExtra("payment");
+        mUsernameEditText=findViewById(R.id.UsernameEditText);
+        DashboardArrayAdpater adapter = new DashboardArrayAdpater(this,android.R.layout.simple_list_item_1, service, status);
+        mListView.setAdapter(adapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String service = ((TextView)view).getText().toString();
+                Toast.makeText(DashboardActivity.this, service, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Intent intent= getIntent();
+        String username = intent.getStringExtra("username");
+        mUsernameEditText.setText("Here are all the status of your bills: " + username);
 
     }
 }

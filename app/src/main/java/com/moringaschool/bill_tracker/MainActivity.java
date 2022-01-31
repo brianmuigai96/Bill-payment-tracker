@@ -10,6 +10,8 @@ import android.widget.EditText;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.text.BreakIterator;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v==mLoginButton) {
-                    String username =mUsernameEditText.getText().toString();
+                    String username =mUsername.getText().toString();
 //                passing data from Dashboard activity
                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                     intent.putExtra("Username", username);
