@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
-import com.moringaschool.bill_tracker.DashboardArrayAdpater;
+import com.moringaschool.bill_tracker.adapters.DashboardArrayAdpater;
 import com.moringaschool.bill_tracker.R;
 
 import butterknife.BindView;

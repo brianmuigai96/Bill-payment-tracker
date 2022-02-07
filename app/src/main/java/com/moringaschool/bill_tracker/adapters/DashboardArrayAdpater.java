@@ -1,4 +1,4 @@
-package com.moringaschool.bill_tracker;
+package com.moringaschool.bill_tracker.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
