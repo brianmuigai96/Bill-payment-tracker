@@ -6,34 +6,58 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.moringaschool.bill_tracker.Constants;
+import com.moringaschool.bill_tracker.Data;
 import com.moringaschool.bill_tracker.R;
 import com.moringaschool.bill_tracker.network.ConvertApi;
+import com.moringaschool.bill_tracker.retrofit_client.DataClient;
 
 import org.json.JSONObject;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PaymentActivity  extends AppCompatActivity {
+    ConvertApi convertApi;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
         Intent intent= getIntent();
         String payment = intent.getStringExtra("payment");
-        retrofitBuilder = new RetrofitBuilder();
 
-        Retrofit retrofit =retrofitBuilder.getRetrofitBuilder();
-        retrofit.create(Data.class);
+        convertApi = DataClient.getClient();
+        Call<Data> call =convertApi.getData(Constants.API_KEY);
+       call.enqueue(new Callback<Data>() {
+           @Override
+           public void onResponse(Call<Data> call, Response<Data> response) {
 
-        call<JSONObject> call =ConvertApi.getRates();
 
-        call.enqueue(new callback<JSONObject>();){
-            @Override
-             Public void onResponse(Call <JSONObject> call, Response <JSONObject> response){
-                if(response.isSuccessful()){
-                    Log.d(tag, "json response: ");
-                }
-            }
 
-        }
+
+           }
+
+         @Override
+           public void onFailure(Call<Data> call, Throwable t) {
+
+           }
+       });
+
 
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
