@@ -2,6 +2,7 @@ package com.moringaschool.bill_tracker.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -32,6 +33,12 @@ public class PaymentActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
         Intent intent= getIntent();
         String payment = intent.getStringExtra("payment");
+
+        //Adding Functionality
+        String[] dropDownList = {"USD", "INR","EUR","NZD"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, dropDownList);
+        convertToDropdown.setAdapter(adapter);
+        convertFromDropdown.setAdapter(adapter);
 
 //        Initialization
         currencyConverted = (EditText) findViewById(R.id.currency_converted);
