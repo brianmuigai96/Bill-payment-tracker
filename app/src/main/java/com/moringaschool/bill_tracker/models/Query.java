@@ -1,5 +1,5 @@
 
-package com.moringaschool.bill_tracker;
+package com.moringaschool.bill_tracker.models;
 
 
 import com.google.gson.annotations.Expose;

@@ -1,8 +1,8 @@
 package com.moringaschool.bill_tracker.network;
 
-import com.moringaschool.bill_tracker.Data;
 
-import org.json.JSONObject;
+
+import com.moringaschool.bill_tracker.models.Data;
 
 
 import retrofit2.Call;
