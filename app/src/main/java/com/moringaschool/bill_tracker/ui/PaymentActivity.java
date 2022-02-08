@@ -12,7 +12,6 @@ import com.moringaschool.bill_tracker.Constants;
 
 import com.moringaschool.bill_tracker.R;
 import com.moringaschool.bill_tracker.models.Data;
-import com.moringaschool.bill_tracker.retrofit_client.DataClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
