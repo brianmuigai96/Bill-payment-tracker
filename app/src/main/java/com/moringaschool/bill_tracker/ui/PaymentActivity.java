@@ -42,7 +42,7 @@ public class PaymentActivity  extends AppCompatActivity {
 
         //Adding Functionality
         String[] dropDownList = {"USD", "INR","EUR","NZD"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, dropDownList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, dropDownList);
         convertToDropdown.setAdapter(adapter);
         convertFromDropdown.setAdapter(adapter);
 
