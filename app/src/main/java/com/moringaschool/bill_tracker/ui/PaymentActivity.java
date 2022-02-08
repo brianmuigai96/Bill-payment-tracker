@@ -2,7 +2,6 @@ package com.moringaschool.bill_tracker.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -13,10 +12,7 @@ import com.moringaschool.bill_tracker.Constants;
 
 import com.moringaschool.bill_tracker.R;
 import com.moringaschool.bill_tracker.models.Data;
-import com.moringaschool.bill_tracker.network.ConvertApi;
 import com.moringaschool.bill_tracker.retrofit_client.DataClient;
-
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
