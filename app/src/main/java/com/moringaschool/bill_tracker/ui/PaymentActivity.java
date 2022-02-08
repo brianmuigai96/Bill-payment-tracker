@@ -17,16 +17,20 @@ import com.moringaschool.bill_tracker.R;
 import com.moringaschool.bill_tracker.network.RetrofitInterface;
 import com.moringaschool.bill_tracker.retrofit_client.RetrofitBuilder;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PaymentActivity  extends AppCompatActivity {
-    Button button;
-    EditText currencyToBeConverted;
-    EditText currencyConverted;
-    Spinner convertToDropdown;
-    Spinner convertFromDropdown;
+    @BindView(R.id.currency_converted)EditText currencyConverted;
+    @BindView(R.id.currency_to_be_converted)EditText currencyToBeConverted;
+    @BindView(R.id.convert_to) Spinner convertToDropdown;
+    @BindView(R.id.convert_from) Spinner convertFromDropdown;
+    @BindView(R.id.button)Button button;
+
+
 
 
     @Override
@@ -43,11 +47,8 @@ public class PaymentActivity  extends AppCompatActivity {
         convertFromDropdown.setAdapter(adapter);
 
 //        Initialization
-        currencyConverted = (EditText) findViewById(R.id.currency_converted);
-        currencyToBeConverted = (EditText) findViewById(R.id.currency_to_be_converted);
-        convertToDropdown = (Spinner) findViewById(R.id.convert_to);
-        convertFromDropdown = (Spinner) findViewById(R.id.convert_from);
-        button = (Button) findViewById(R.id.button);
+        ButterKnife.bind(this);
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
