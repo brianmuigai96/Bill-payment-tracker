@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     String username =mUsername.getText().toString();
                     String password =mPassword.getText().toString();
 //                passing data from Dashboard activity
-                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                    Intent intent = new Intent(MainActivity.this, DashboardDetailActivity.class);
                     intent.putExtra("username",username);
                     intent.putExtra("password",password);
                     startActivity(intent);

@@ -1,50 +1,32 @@
 package com.moringaschool.bill_tracker.ui;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.moringaschool.bill_tracker.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class DashboardDetailActivity {
-
-
-    @BindView(R.id.btn) Button button;
-
-
-  
-
-    public void DashboardDetailFragment() {
-        // Required empty public constructor
-    }
-
-
-    public static DashboardDetailFragment newInstance() {
-        DashboardDetailFragment dashboardDetailFragment = new  DashboardDetailFragment();
-        Bundle args = new Bundle();
-
-
-        return  dashboardDetailFragment;
-    }
-
-
+public class DashboardDetailActivity extends AppCompatActivity {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_dashboard_detail);
 
-        // Inflate the layout for this fragment
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String password = intent.getStringExtra("password");
+        Bundle bundle =new Bundle();
+        bundle.putString("username", username);
+        bundle.putString("password", password);
 
-        View view =  inflater.inflate(R.layout.fragment_dashboard_detail, container, false);
-        ButterKnife.bind(this, view);
-
-
-
-        return view;
+        DashboardFragment dashboardFragment =new DashboardFragment();
+        dashboardFragment.setArguments(bundle);
+        FragmentManager fragmentManager =getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmentcontainer,dashboardFragment)
+                .commit();
     }
-}
 }

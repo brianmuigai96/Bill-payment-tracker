@@ -26,7 +26,7 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_dashboard_fragment);
         ButterKnife.bind(this);
         mUsernameEditText = findViewById(R.id.UsernameEditText);
         DashboardArrayAdpater adapter = new DashboardArrayAdpater(this, android.R.layout.simple_list_item_1, service, status);
@@ -40,10 +40,7 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
             }
         });
 //unique naming system
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String password = intent.getStringExtra("password");
-        mUsernameEditText.setText("Here are all the status of your bills: " + username);
+
 
         mProceedButton.setOnClickListener(this);
     }
