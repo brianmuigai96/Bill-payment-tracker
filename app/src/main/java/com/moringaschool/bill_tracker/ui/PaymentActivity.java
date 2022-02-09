@@ -37,6 +37,7 @@ public class PaymentActivity  extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+        ButterKnife.bind(this);
         Intent intent= getIntent();
         String payment = intent.getStringExtra("payment");
 
@@ -46,8 +47,6 @@ public class PaymentActivity  extends AppCompatActivity {
         convertToDropdown.setAdapter(adapter);
         convertFromDropdown.setAdapter(adapter);
 
-//        Initialization
-        ButterKnife.bind(this);
 
 
         button.setOnClickListener(new View.OnClickListener() {

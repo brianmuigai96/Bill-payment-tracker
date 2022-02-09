@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 if (v==mLoginButton) {
-//                    TODO functionalise the username
+//                 
                     String username =mUsername.getText().toString();
                     String password =mPassword.getText().toString();
 //                passing data from Dashboard activity
