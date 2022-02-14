@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "73824127295",
-    "project_id": "bill-tracker-94827",
-    "storage_bucket": "bill-tracker-94827.appspot.com"
+    "project_number": "662423301021",
+    "project_id": "bill-tracker-71a6f",
+    "storage_bucket": "bill-tracker-71a6f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:73824127295:android:ce0c700297c6e3db9aab8a",
+        "mobilesdk_app_id": "1:662423301021:android:1f2c20223e25dc91691d74",
         "android_client_info": {
           "package_name": "com.moringaschool.bill_tracker"
         }
       },
       "oauth_client": [
         {
-          "client_id": "73824127295-bch8m4lh0th06sts2jpp1esi6b9lrce8.apps.googleusercontent.com",
+          "client_id": "662423301021-jpd35jgbo5ibqe3a15049l0rr2gme9nv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.moringaschool.bill_tracker",
@@ -22,20 +22,20 @@
           }
         },
         {
-          "client_id": "73824127295-6m53iena2d4rhsjf2mojvqe560e55pqj.apps.googleusercontent.com",
+          "client_id": "662423301021-0nb37ckb01hokinacck7ohgf6pf56jtl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCx5cBo3AiYYpKKWtBjWgz4AZHwr5PJA78"
+          "current_key": "AIzaSyDkfM587j-njxZZxoQsh2VAXcwbUz8OKAA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "73824127295-6m53iena2d4rhsjf2mojvqe560e55pqj.apps.googleusercontent.com",
+              "client_id": "662423301021-0nb37ckb01hokinacck7ohgf6pf56jtl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

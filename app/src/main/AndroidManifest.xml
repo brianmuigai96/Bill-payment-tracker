@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BillTracker">
         <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ui.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ui.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.DashboardDetailActivity"
             android:exported="false" />
         <activity
@@ -27,12 +36,12 @@
         <activity android:name=".ui.DashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.bill_tracker.ui.MainActivity"></meta-data>
+                android:value="com.moringaschool.bill_tracker.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.PaymentActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.bill_tracker.ui.MainActivity"></meta-data>
+                android:value="com.moringaschool.bill_tracker.ui.MainActivity" />
         </activity>
     </application>
 

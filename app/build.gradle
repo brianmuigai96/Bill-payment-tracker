@@ -1,8 +1,7 @@
 plugins {
     id 'com.android.application'
 }
-apply plugin: 'com.android.application'
-
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdk 32
@@ -39,6 +38,9 @@ android {
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/notice.txt'
     }
+    buildFeatures {
+        viewBinding true
+    }
 
     buildTypes {
         release {
@@ -57,6 +59,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     testImplementation 'junit:junit:4.13.2'
 //    Robolectric dependencies
     testImplementation 'org.robolectric:robolectric:4.4'
@@ -78,6 +83,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.1.0')
 //  Importing firebase analytics
     implementation 'com.google.firebase:firebase-analytics'
+//    Importing firebase database
+    implementation 'com.google.firebase:firebase-database'
 
 
 
