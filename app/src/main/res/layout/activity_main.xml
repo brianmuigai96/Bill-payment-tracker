@@ -15,8 +15,8 @@
         android:layout_margin="30dp"
         android:padding="20dp" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        pass
+    <EditText
+
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
