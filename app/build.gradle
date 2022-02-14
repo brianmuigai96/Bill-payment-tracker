@@ -85,6 +85,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
 //    Importing firebase database
     implementation 'com.google.firebase:firebase-database'
+//    Importin material dependencies
+    implementation "com.google.android.material:material:1.2.1"
 
 
 
