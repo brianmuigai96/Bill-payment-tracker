@@ -31,12 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 if (v==mLoginButton) {
 //                 
-                    String username =mUsername.getText().toString();
-                    String password =mPassword.getText().toString();
+//                    String username =mUsername.getText().toString();
+//                    String password =mPassword.getText().toString();
 //                passing data from Dashboard activity
-                    Intent intent = new Intent(MainActivity.this, DashboardDetailActivity.class);
-                    intent.putExtra("username",username);
-                    intent.putExtra("password",password);
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                    intent.putExtra("username",username);
+//                    intent.putExtra("password",password);
                     startActivity(intent);
                     onBackPressed();
                 }
