@@ -29,6 +29,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public static final String TAG = SignUpActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,5 +93,19 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 });
 
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }
