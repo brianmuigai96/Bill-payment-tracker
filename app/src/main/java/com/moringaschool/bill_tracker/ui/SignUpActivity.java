@@ -28,6 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.loginTextView) TextView mLoginTextView;
     public static final String TAG = SignUpActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthListener;
 
 
 
@@ -43,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void createAuthStateListener() {
-        FirebaseAuth.AuthStateListener mAuthListener = new FirebaseAuth.AuthStateListener() {
+    mAuthListener = new FirebaseAuth.AuthStateListener() {
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
