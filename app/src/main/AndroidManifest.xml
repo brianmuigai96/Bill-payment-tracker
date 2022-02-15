@@ -15,19 +15,10 @@
             android:name=".ui.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.ui.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.ui.LoginActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.DashboardDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.LoginActivity"
             android:exported="true">
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
