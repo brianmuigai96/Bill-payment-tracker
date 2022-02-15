@@ -43,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         createAuthStateListener();
     }
 
+
     private void createAuthStateListener() {
     mAuthListener = new FirebaseAuth.AuthStateListener() {
 
@@ -82,6 +83,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
+
+        boolean validEmail = isValidEmail(email);
+        boolean validName = isValidName(name);
+        boolean validPassword = isValidPassword(password, confirmPassword);
+        if (!validEmail || !validName || !validPassword) return;
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
