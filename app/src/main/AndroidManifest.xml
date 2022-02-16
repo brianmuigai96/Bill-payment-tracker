@@ -15,9 +15,6 @@
             android:name=".ui.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.DashboardDetailActivity"
             android:exported="false" />
         <activity

@@ -28,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.loginTextView) TextView mLoginTextView;
     public static final String TAG = SignUpActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
-    FirebaseAuth.AuthStateListener mAuthListener;
+
 
 
 
@@ -37,29 +37,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
-
+        mAuth = FirebaseAuth.getInstance();
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);
-        createAuthStateListener();
+
     }
 
 
-    private void createAuthStateListener() {
-    mAuthListener = new FirebaseAuth.AuthStateListener() {
-
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                final FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-
-        };
-    }
 
 
     @Override
@@ -93,6 +77,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "Authentication successful");
+                        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
@@ -105,16 +93,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
+
     private boolean isValidEmail(String email) {
         boolean isGoodEmail =
                 (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
