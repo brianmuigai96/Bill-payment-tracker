@@ -11,10 +11,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.bill_tracker.adapters.DashboardArrayAdpater;
 import com.moringaschool.bill_tracker.R;
 
@@ -27,6 +29,9 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
     private String [] service = new String[]{"Dstv","Gotv","Rent","Car Insuarance","Water bill","Electricity bill"};
     private String [] status = new String[]{"Paid","Pending","Unpaid","Overdue","Unpaid","Overdue"};
     @BindView(R.id.proceedbutton) MaterialButton mProceedButton;
+    FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseAuth mAuth;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,18 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
         mUsernameEditText = findViewById(R.id.UsernameEditText);
         DashboardArrayAdpater adapter = new DashboardArrayAdpater(this, android.R.layout.simple_list_item_1, service, status);
         mListView.setAdapter(adapter);
+        mAuth= FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                } else {
+
+                }
+            }
+        };
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
