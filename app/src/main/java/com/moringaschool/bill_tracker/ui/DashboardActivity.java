@@ -75,7 +75,6 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
                     onBackPressed();
                 }
 
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

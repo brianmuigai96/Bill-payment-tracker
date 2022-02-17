@@ -39,22 +39,28 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if (view == mRegisterTextView) {
-            String email = mEmail.getText().toString();
-            addToSharedPreferences(email);
-            String password = mPassword.getText().toString();
-            addToSharedPreferences(password);
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
             finish();
         }else if(view == mPasswordLoginButton){
+         String email = mEmail.getText().toString().trim();
+            addToSharedPreferences(email);
+        String password = mPassword.getText().toString().trim();
+            addToSharedPreferences(password);
+        if (email.equals("")) {
+            mEmail.setError("Please enter your email");
+            return;
+        }
+        if (password.equals("")) {
+            mPassword.setError("Password cannot be blank");
+            return;
+        }
             Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
-
         }
     }
-
 
     private void addToSharedPreferences(String email) {
         mEditor.putString(Constants.PREFERENCES_EMAIL_KEY, email).apply();

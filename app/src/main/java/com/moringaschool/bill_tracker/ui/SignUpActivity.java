@@ -18,7 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.moringaschool.bill_tracker.R;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,8 +37,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.loadingTextView) TextView mLoadingSignUp;
     public static final String TAG = SignUpActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
-    private Object AuthResult;
-    private Object Task;
+    private String mName;
 
 
     @Override
@@ -47,17 +49,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);
 
-
-    }
-    private void showProgressBar() {
-        mSignInProgressBar.setVisibility(View.VISIBLE);
-        mLoadingSignUp.setVisibility(View.VISIBLE);
-        mLoadingSignUp.setText("Sign Up process in Progress");
-    }
-
-    private void hideProgressBar() {
-        mSignInProgressBar.setVisibility(View.GONE);
-        mLoadingSignUp.setVisibility(View.GONE);
     }
 
 
@@ -75,9 +66,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         if (view == mCreateUserButton) {
             createNewUser();
         }
-
     }
-
     private void createNewUser() {
         final String name = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
@@ -91,20 +80,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         showProgressBar();
 
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<com.google.firebase.auth.AuthResult>() {
-                    @Override
-                    public void onComplete(com.google.android.gms.tasks.Task<AuthResult> task) {
-                        hideProgressBar();
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "Authentication successful");
-                        } else {
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-
+                .addOnCompleteListener(this,task -> {
+                                hideProgressBar();
+                                if (task.isSuccessful()) {
+                                    createFirebaseUserProfile(Objects.requireNonNull(task.getResult().getUser()));
+                                    Log.d(TAG, "Authentication successful");
+                                } else {
+                                    Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                        });
     }
 
     @Override
@@ -112,7 +97,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         super.onStart();
 
     }
-
 
     private boolean isValidEmail(String email) {
         boolean isGoodEmail =
@@ -141,5 +125,31 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return false;
         }
         return true;
+    }
+    private void showProgressBar() {
+        mSignInProgressBar.setVisibility(View.VISIBLE);
+        mLoadingSignUp.setVisibility(View.VISIBLE);
+        mLoadingSignUp.setText("Sign Up process in Progress");
+    }
+
+    private void hideProgressBar() {
+        mSignInProgressBar.setVisibility(View.GONE);
+        mLoadingSignUp.setVisibility(View.GONE);
+    }
+
+    private void createFirebaseUserProfile(final FirebaseUser user){
+        UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
+                .setDisplayName(mName)
+                .build();
+
+        user.updateProfile(addProfileName)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(SignUpActivity.this, "The display name has ben set", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 }

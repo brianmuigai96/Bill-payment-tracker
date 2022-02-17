@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.SignUpActivity"/>
-        <activity android:name=".ui.DashboardActivity"/>
+        <activity android:name=".ui.DashboardActivity" android:theme=""/>
         <activity android:name=".ui.PaymentActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
