@@ -24,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DashboardActivity  extends AppCompatActivity implements  View.OnClickListener {
-    @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.recyclerView) ListView mRecyclerView;
     private TextView mUsernameEditText;
     private String [] service = new String[]{"Dstv","Gotv","Rent","Car Insuarance","Water bill","Electricity bill"};
     private String [] status = new String[]{"Paid","Pending","Unpaid","Overdue","Unpaid","Overdue"};
@@ -38,8 +38,6 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
         setContentView(R.layout.activity_dashboard_fragment);
         ButterKnife.bind(this);
         mUsernameEditText = findViewById(R.id.UsernameEditText);
-        DashboardArrayAdpater adapter = new DashboardArrayAdpater(this, android.R.layout.simple_list_item_1, service, status);
-        mListView.setAdapter(adapter);
         mAuth= FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -52,16 +50,6 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
                 }
             }
         };
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String service = ((TextView) view).getText().toString();
-                Toast.makeText(DashboardActivity.this, service, Toast.LENGTH_LONG).show();
-            }
-        });
-//unique naming system
-
 
         mProceedButton.setOnClickListener(this);
     }

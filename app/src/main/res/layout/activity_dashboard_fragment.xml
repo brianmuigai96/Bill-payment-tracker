@@ -11,11 +11,15 @@
         android:text="Payments to be made"
         android:textSize="16sp" />
 
-    <ListView
-        android:id="@+id/listView"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_below="@+id/UsernameEditText" />
+        android:layout_height="589dp"
+        android:layout_above="@+id/proceedbutton"
+        android:layout_below="@+id/UsernameEditText"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="9dp" />
 
     <com.google.android.material.button.MaterialButton
         android:text="Proceed"

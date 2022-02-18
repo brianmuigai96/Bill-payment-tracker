@@ -16,6 +16,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.moringaschool.bill_tracker.Constants;
 import com.moringaschool.bill_tracker.R;
 import com.moringaschool.bill_tracker.adapters.DashboardArrayAdpater;
 
@@ -25,14 +31,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
-    @BindView(R.id.listView)
-    ListView mListView;
-    private String[] service = new String[]{"Dstv", "Gotv", "Rent", "Car Insuarance", "Water bill", "Electricity bill"};
-    private String[] status = new String[]{"Paid", "Pending", "Unpaid", "Overdue", "Unpaid", "Overdue"};
-    @BindView(R.id.proceedbutton)
-    MaterialButton mProceedButton;
-    @BindView(R.id.UsernameEditText)
-    TextView mUsernameEditText;
+    @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.proceedbutton) MaterialButton mProceedButton;
+    @BindView(R.id.UsernameEditText) TextView mUsernameEditText;
+    private DatabaseReference billReference;
     private String passwword;
     private String username;
 
@@ -43,17 +45,23 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.activity_dashboard_fragment, container, false);
         ButterKnife.bind(this, view);
-
-        DashboardArrayAdpater adapter = new DashboardArrayAdpater(getContext(), android.R.layout.simple_list_item_1, service, status);
-        mListView.setAdapter(adapter);
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        billReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_BILL);
+        billReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String service = ((TextView) view).getText().toString();
-                Toast.makeText(getContext(), service, Toast.LENGTH_LONG).show();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+
+
 
         mUsernameEditText.setText("Here are all the status of your bills: " + username);
 
