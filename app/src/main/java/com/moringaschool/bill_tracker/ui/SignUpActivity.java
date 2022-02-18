@@ -48,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mAuth = FirebaseAuth.getInstance();
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
