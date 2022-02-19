@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +40,8 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
     @BindView(R.id.recyclerView) RecyclerView mRecylerView;
     @BindView(R.id.proceedbutton) MaterialButton mProceedButton;
     @BindView(R.id.UsernameEditText) TextView mUsernameEditText;
+    @BindView(R.id.add) FloatingActionButton mAdd;
+
     private DatabaseReference billReference;
     FirebaseAuth.AuthStateListener mAuthListener;
     FirebaseAuth mAuth;
@@ -63,9 +66,10 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
                 Toast.makeText(DashboardActivity.this,"successful",Toast.LENGTH_LONG).show();
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     mbill.add(postSnapshot.getValue(Bill.class));
-                    mRecylerView.setAdapter(new BillAdapter(DashboardActivity.this,mbill));
 
                 }
+                mRecylerView.setAdapter(new BillAdapter(DashboardActivity.this,mbill));
+
 
             }
 
@@ -91,16 +95,28 @@ public class DashboardActivity  extends AppCompatActivity implements  View.OnCli
         };
 
         mProceedButton.setOnClickListener(this);
+        mAdd.setOnClickListener(this);
     }
             @Override
             public void onClick(View v) {
                 if (v==mProceedButton) {
 //                passing data from Dashboard activity
-                    Intent intent = new Intent(DashboardActivity.this, AddBill.class);
+                    Intent intent = new Intent(DashboardActivity.this, PaymentActivity.class);
                     intent.putExtra(" payment","payment");
                     startActivity(intent);
                     onBackPressed();
+                }else {
+                    if(v==mAdd){
+                        Intent intent = new Intent(DashboardActivity.this, AddBill.class);
+                        intent.putExtra(" payment","payment");
+                        startActivity(intent);
+                        onBackPressed();
+                    }
+
                 }
+
+
+
 
     }
     @Override

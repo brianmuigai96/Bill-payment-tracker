@@ -22,11 +22,11 @@ public class DashboardDetailActivity extends AppCompatActivity {
         bundle.putString("username", username);
         bundle.putString("password", password);
 
-        DashboardFragment dashboardFragment =new DashboardFragment();
-        dashboardFragment.setArguments(bundle);
-        FragmentManager fragmentManager =getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragmentcontainer,dashboardFragment)
-                .commit();
+//        DashboardFragment dashboardFragment =new DashboardFragment();
+//        dashboardFragment.setArguments(bundle);
+//        FragmentManager fragmentManager =getSupportFragmentManager();
+//        fragmentManager.beginTransaction()
+//                .replace(R.id.fragmentcontainer,dashboardFragment)
+//                .commit();
     }
 }

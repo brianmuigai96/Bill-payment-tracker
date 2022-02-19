@@ -50,7 +50,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mbill.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
