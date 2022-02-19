@@ -17,14 +17,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BillDetailActivity extends AppCompatActivity {
-
-    @BindView(R.id.textView3) TextView mAmount;
+    @BindView(R.id.textView10) TextView mAmount;
     @BindView(R.id.name) TextView mName;
     @BindView(R.id.description) TextView mDescription;
     @BindView(R.id.deleteBill) TextView mDBill;
     @BindView(R.id.textView7) TextView mViewName;
     @BindView(R.id.textView8) TextView mViewDate;
     @BindView(R.id.textView9) TextView mViewDescription;
+    @BindView(R.id.textView3) TextView mViewAmount;
+
 
 
 
@@ -34,7 +35,8 @@ public class BillDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bill_detail);
         ButterKnife.bind(this);
         Bill bill = (Bill) getIntent().getSerializableExtra("Bill");
-        mAmount.setText(bill.getAmount());
+        mViewAmount.setText(bill.getAmount());
+        mViewName.setText(bill.getBillName());
         mViewDate.setText(bill.getDueDate());
         mViewDescription.setText(bill.getDescription());
 

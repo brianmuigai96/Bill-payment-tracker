@@ -79,6 +79,8 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                             Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
+                            Toast.makeText(LoginActivity.this, "Login in successful.",
+                                    Toast.LENGTH_SHORT).show();
                             finish();
                         }else {
 
