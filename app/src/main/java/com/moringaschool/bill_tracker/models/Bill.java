@@ -1,6 +1,8 @@
 package com.moringaschool.bill_tracker.models;
 
-public class Bill {
+import java.io.Serializable;
+
+public class Bill implements Serializable {
     private String billName;
     private String amount ;
     private String dueDate;

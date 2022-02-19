@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BillTracker">
         <activity
+            android:name=".ui.BillDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.AddBill"
             android:exported="false" />
         <activity
@@ -25,9 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.SignUpActivity" />
-        <activity
-            android:name=".ui.DashboardActivity"
-            />
+        <activity android:name=".ui.DashboardActivity" />
         <activity android:name=".ui.PaymentActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
