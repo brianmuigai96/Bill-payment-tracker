@@ -146,7 +146,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         user.updateProfile(addProfileName)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void onComplete( Task<Void> task) {
                         if(task.isSuccessful()){
                             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                             startActivity(intent);

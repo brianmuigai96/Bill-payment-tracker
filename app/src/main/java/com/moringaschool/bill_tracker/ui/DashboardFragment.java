@@ -5,15 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ListView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
@@ -23,15 +21,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.bill_tracker.Constants;
 import com.moringaschool.bill_tracker.R;
-import com.moringaschool.bill_tracker.adapters.DashboardArrayAdpater;
+import com.moringaschool.bill_tracker.adapters.BillAdapter;
+import com.moringaschool.bill_tracker.models.Bill;
 
-import java.security.PrivateKey;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
-    @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.recyclerView) RecyclerView mRecylerView;
     @BindView(R.id.proceedbutton) MaterialButton mProceedButton;
     @BindView(R.id.UsernameEditText) TextView mUsernameEditText;
     private DatabaseReference billReference;
@@ -39,52 +39,57 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private String username;
 
 
-    @Nullable
+
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView( LayoutInflater inflater,  ViewGroup container,Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.activity_dashboard_fragment, container, false);
         ButterKnife.bind(this, view);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
+        mRecylerView.setLayoutManager(linearLayoutManager);
         billReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_BILL);
         billReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange( DataSnapshot snapshot) {
+              ArrayList<Bill> mbill =new ArrayList<>();
+
+                Toast.makeText(getContext(),"successful",Toast.LENGTH_LONG).show();
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    mbill.add(postSnapshot.getValue(Bill.class));
+                    mRecylerView.setAdapter(new BillAdapter(getContext(),mbill));
+
+                }
 
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled( DatabaseError error) {
+                Toast.makeText(getContext(),"error",Toast.LENGTH_LONG).show();
 
             }
         });
 
-
-
-        mUsernameEditText.setText("Here are all the status of your bills: " + username);
-
         mProceedButton.setOnClickListener(this);
-
-
         return view;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle =getArguments();
         username = bundle.getString("username");
         passwword = bundle.getString("password");
-
     }
 
     @Override
     public void onClick(View v) {
         if (v == mProceedButton) {
 //                passing data from Dashboard activity
-            Intent intent = new Intent(getContext(), PaymentActivity.class);
+            Intent intent = new Intent(getContext(), AddBill.class);
             intent.putExtra(" payment", "payment");
             startActivity(intent);
 
